@@ -1,0 +1,20 @@
+.box {
+    border:5px solid black;
+    margin-top:10%;
+}
+.content {
+    border-right:5px solid black;
+    padding:5%;
+}
+.content h1 {
+    font-weight: bold;
+}
+.questionAnswer {
+    padding: 5%;
+}
+.questionAnswer h1 {
+    text-align: center;
+}
+#QA li {
+    display: none;
+}

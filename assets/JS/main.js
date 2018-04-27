@@ -37,4 +37,21 @@ function whenSubmit(e) {
         }
         document.getElementById('myForm').action='user.html';//opens user.html when form is submitted
     }
+    else {
+        var users = JSON.parse(localStorage.getItem('users'));
+        var flag=0;  //to determine whether the username or password is incorrect
+        for(var i in users) {
+            if(users[i].name == username && users[i].pass == password) {
+                flag++;
+                break;
+            }
+        }
+        if(flag==0) {
+            document.getElementById('wrong').innerHTML='Userame or the Password is incorrect.';
+            document.getElementById('myForm').reset();
+            e.preventDefault();  //prevents form from submitting
+        }
+        else
+        document.getElementById('myForm').action='user.html';
+    }
 }
