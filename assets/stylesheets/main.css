@@ -1,0 +1,75 @@
+body {
+    background-image: url('../images/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.inner {
+    position: relative;
+    margin-top: 8%;
+    background-color: rgba(0,0,0,0.5);
+    width:50%;
+    padding: 5% 0%;
+}
+.inner img {
+    text-align:center;
+    margin-left:40%;
+}
+.form-group {
+    width: 80%;
+    padding: 2% 0%;
+}
+.inner, .form-group {
+    margin-left:auto;
+    margin-right:auto;
+}
+label {
+    color: white;
+}
+#login {
+    margin-left:10%;
+}
+.inner p {
+    text-align:center;
+    color:white;
+    margin-top:3%;
+    font-size: 20px;
+}
+.inner p a {
+    color: rgba(255,0,0,0.6);
+    font-weight: bold;
+}
+.inner p a:hover {
+    text-decoration: none;
+    color: rgba(255,0,0,0.5);
+}
+@media(max-width:992px) {
+    .inner {
+        margin-top: 15%;
+    }
+    .inner img {
+        margin-left: 35%;
+    }
+}
+@media(max-width:580px) {
+    .inner {
+        width:100%;
+        margin-top: 25%;
+    }
+    .inner p {
+        font-size: 15px;
+    }
+}
+@media(max-width:330px) {
+    .inner {
+        margin-top: 50%;
+    }
+    .inner img {
+        margin-left:28%;
+    }
+}
+#wrong {
+    color: red;
+    font-size: 18px;
+    margin: 0% 0% 5% 10%;
+}
