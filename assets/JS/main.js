@@ -8,7 +8,9 @@ Function for Sign Up
 */
 function newUser() {
     document.getElementById('login').innerHTML='Sign Up';
-    document.getElementById('newpass').innerHTML='Choose Password';
+    document.getElementById('newpass').innerHTML='Choose Password:';
+    document.getElementById('wrong').innerHTML='';
+    passwordStrength();  //To check the strength of the password
 }
 /*
 This function is called when the form is submitted
@@ -20,6 +22,10 @@ function whenSubmit(e) {
     Condition for Sign Up
     */
     if(document.getElementById('login').innerHTML=='Sign Up') {
+        if(!validateFormSignUp(username, password)) {
+            e.preventDefault();
+            return false;
+        }
         var user = {
             name : username,
             pass : password
@@ -37,6 +43,9 @@ function whenSubmit(e) {
         }
         document.getElementById('myForm').action='user.html';//opens user.html when form is submitted
     }
+    /*
+    Condition for Sign In
+    */
     else {
         var users = JSON.parse(localStorage.getItem('users'));
         var flag=0;  //to determine whether the username or password is incorrect
@@ -46,10 +55,9 @@ function whenSubmit(e) {
                 break;
             }
         }
-        if(flag==0) {
-            document.getElementById('wrong').innerHTML='Userame or the Password is incorrect.';
-            document.getElementById('myForm').reset();
-            e.preventDefault();  //prevents form from submitting
+        if(!validateFormSignIn(username, password,flag)) {
+            e.preventDefault();
+            return false;
         }
         else
         document.getElementById('myForm').action='user.html';
