@@ -38,6 +38,10 @@ function whenSubmit(e) {
         }
         else {
             var users = JSON.parse(localStorage.getItem('users'));
+            if(!usernameExist(users, username)) {
+                e.preventDefault();
+                return false;
+            }
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
         }

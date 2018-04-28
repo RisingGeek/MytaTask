@@ -55,3 +55,16 @@ function validateFormSignIn(username, password,flag) {
     else
         return true;
 }
+function usernameExist(users, username) {
+    let flag=0;
+    for(let i in users) {
+        if(users[i].name == username) {
+            document.getElementById('wrong').style.color='red';
+            document.getElementById('wrong').innerHTML='This username already exists';
+            flag++;
+            return false;
+        }
+    }
+    if(flag==0)
+        return true;
+}
