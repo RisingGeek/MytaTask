@@ -1,6 +1,60 @@
 {
     "gradesList": [
       {
+        "name": "Grade 10",
+        "subjectList": [
+          {
+            "name": "Science",
+            "chapterList": [
+              {
+                "name": "Matter",
+                "questionList": [
+                  {
+                    "question": "What is matter?",
+                    "answer": "Anything which occupies space and has a mass is ccalled matter."
+                  },
+                  {
+                    "question": "Name three common states of matter.",
+                    "answer": "Solid, Liquid, Gas"
+                  }
+                ]
+              }
+            ]
+          },
+  {
+            "name": "English",
+            "chapterList": [
+              {
+                "name": "Tense",
+                "questionList": [
+                  {
+                    "question": "Was John reading the book last night? Name the tense.",
+                    "answer": "Past Progressive"
+                  },
+                  {
+                    "question": "Will they have won the match? Name the tense.",
+                    "answer": "Future Perfect"
+                  }
+                ]
+              },
+              {
+                "name": "Verb",
+                "questionList": [
+                  {
+                    "question": " I ___ watching TV when Paul and Simon arrived.",
+                    "answer": "was"
+                  },
+                  {
+                    "question": "Do you think he ___ what I said?",
+                    "answer": "understood"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "name": "Grade 11",
         "subjectList": [
           {
