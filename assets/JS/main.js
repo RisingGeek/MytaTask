@@ -10,7 +10,24 @@ function newUser() {
     document.getElementById('login').innerHTML='Sign Up';
     document.getElementById('newpass').innerHTML='Choose Password:';
     document.getElementById('wrong').innerHTML='';
+    document.getElementById('signup').style.display='none';
     passwordStrength();  //To check the strength of the password
+    if(document.getElementById('login').innerHTML=='Sign Up')
+        alreadyAccount();    
+}
+/*
+If users clicks on Sign Up by mistake
+*/
+function alreadyAccount() {
+    document.getElementById('alreadyAcc').style.display='block';
+    document.getElementById('alreadyAcc').addEventListener('click', function() {
+        document.getElementById('login').innerHTML='Sign In';
+        document.getElementById('newpass').innerHTML='Password:';
+        document.getElementById('wrong').innerHTML='';
+        document.getElementById('myForm').reset();
+        document.getElementById('signup').style.display='block';
+        document.getElementById('alreadyAcc').style.display='none';
+    });
 }
 /*
 This function is called when the form is submitted
@@ -64,6 +81,6 @@ function whenSubmit(e) {
             return false;
         }
         else
-        document.getElementById('myForm').action='user.html';
+        document.getElementById('myForm').action='config.html';
     }
 }

@@ -1,0 +1,38 @@
+body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.box {
+    border:5px solid black;
+    margin:10% 0%;
+}
+.content {
+    border-right:5px solid black;
+    padding:5%;
+}
+.content h1 {
+    font-weight: bold;
+}
+.questionAnswer {
+    padding: 5%;
+}
+.questionAnswer h1 {
+    text-align: center;
+}
+#QA li {
+    display: none;
+}
+@media(max-width:768px) {
+    .content {
+        border-right: none;
+        border-bottom: 5px solid black;
+    }
+}
+@media(max-width:350px) {
+    .questionAnswer h1 {
+        font-size: 25px;
+    }
+    #QA, #index {
+        padding: 0;
+    }
+}

@@ -3,7 +3,7 @@ xhr.onreadystatechange = function() {
     if(this.readyState==4 && this.status==200) {
         var text = JSON.parse(this.responseText);
         var gradesList = text.gradesList;  //Grades
-        var ul = document.getElementById('index');  //unordered list for Content
+        var ul = document.getElementById('index');  //unordered list for grades
         var qa = [];  //questions for every subject
         var chapters = [];  //all chapters
         var count = [];  //number of questions in each chapter

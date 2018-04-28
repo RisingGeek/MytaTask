@@ -1,6 +1,7 @@
 function passwordStrength() {
     var passwordStrength = document.getElementById('wrong');
     document.getElementById('password').addEventListener('keyup', function() {
+        if(document.getElementById('login').innerHTML=='Sign Up') {
         var password = document.getElementById('password').value;
             if(password.length >=0 && password.length <=6) {
                 passwordStrength.style.color='red';
@@ -14,5 +15,6 @@ function passwordStrength() {
                 passwordStrength.style.color='green';
                 passwordStrength.innerHTML='Password strength : Strong';
             }
+        }
     });
 }

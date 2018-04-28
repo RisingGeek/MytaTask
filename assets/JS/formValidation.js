@@ -55,6 +55,9 @@ function validateFormSignIn(username, password,flag) {
     else
         return true;
 }
+/*
+If username already exists
+*/
 function usernameExist(users, username) {
     let flag=0;
     for(let i in users) {
