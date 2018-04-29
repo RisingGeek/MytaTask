@@ -62,7 +62,7 @@ function whenSubmit(e) {
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
         }
-        document.getElementById('myForm').action='user.html';//opens user.html when form is submitted
+        document.getElementById('myForm').action='config.html';//opens config.html when form is submitted
     }
     /*
     Condition for Sign In

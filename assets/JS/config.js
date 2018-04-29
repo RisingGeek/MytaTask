@@ -4,9 +4,12 @@ xhr.onreadystatechange = function() {
         var text = JSON.parse(this.responseText);
         var gradesList = text.gradesList;  //Grades
         var ul = document.getElementById('index');  //unordered list for grades
+        var grades = [];  //all grades
+        var subjects = [];  //all subjects for every grade
+        var chapters = [];  //all chapters for every subject
         var qa = [];  //questions for every subject
-        var chapters = [];  //all chapters
         var count = [];  //number of questions in each chapter
+        var subjectCount = [];  //number of subjects in each grade
         var ulqa = document.getElementById('QA');  //unordered list for Question/Answer
         /*
         Loop for Grades
@@ -18,10 +21,14 @@ xhr.onreadystatechange = function() {
             var h2 = document.createElement('h2');  //contains gradeName
             h2.innerHTML=gradeName;
             li.appendChild(h2);
+            h2.classList.add('grades'); //styles for gradeNames
 
             var subjectList = gradesList[i].subjectList;  //Subjects
             var ulSubject = document.createElement('ul');  //unordered list for subjects
             li.appendChild(ulSubject);
+            ulSubject.style.padding='0';
+            grades.push(h2);
+            var subjectNo = 0;  //for counting number of subjects in each grade
             /*
             Loop for Subjects
             */
@@ -32,10 +39,13 @@ xhr.onreadystatechange = function() {
                 var h3 = document.createElement('h3');  //contains subjectName
                 h3.innerHTML=subjectName;
                 liSubject.appendChild(h3);
+                h3.classList.add('subjects');  //styles for subjectName
 
                 var chapterList = subjectList[j].chapterList;
                 var ulChapter = document.createElement('ul');  //unordered list for chapters
                 liSubject.appendChild(ulChapter);
+                subjects.push(liSubject);
+                subjectNo++;
                 /*
                 Loop for Chapter
                 */
@@ -46,15 +56,14 @@ xhr.onreadystatechange = function() {
                     var h4 = document.createElement('h4');  //contains chapterName
                     h4.innerHTML=chapterName;
                     liChapter.appendChild(h4);
+                    h4.classList.add('chapters');  //styles for chapterName
 
-                    chapters.push(h4);
-                    /*
-                    assigns pointer cursor to all the chapters when pointing over it
-                    */
-                    h4.style.cursor='pointer';  
-
+                    chapters.push(h4);  
                     var questionList = chapterList[k].questionList;
                     var c=0;  //for counting number of question/answer in each chapter
+                    /*
+                    Loop for Question/Answer
+                    */
                     for(let l = 0; l < questionList.length; l++) {
                         var question = questionList[l].question;
                         var answer = questionList[l].answer;
@@ -68,10 +77,13 @@ xhr.onreadystatechange = function() {
                         liqa.appendChild(pa);
                         qa.push(liqa);
                         c++;
+                        pq.classList.add('font');
+                        pa.classList.add('font');
                     }
                     count.push(c);
                 }
             }
+            subjectCount.push(subjectNo);
         }
         chapters[0].style.fontWeight='bold';  //bolds the name of first chapter
         /*
@@ -88,7 +100,7 @@ xhr.onreadystatechange = function() {
         */
         function change(i) {
             return function() {
-                var sum=0;
+                var sum = 0;
                 /*
                 hides all question/answer
                 */
@@ -105,13 +117,47 @@ xhr.onreadystatechange = function() {
                     sum+=count[a];
                 }
                 /*
-                to display cut=rrent chapter question/answer
+                to display current chapter question/answer
                 */
-                for(var b = sum; b < sum+count[i]; b++) {
+                for(let b = sum; b < sum+count[i]; b++) {
                     qa[b].style.display='block';
                 }
                 chapters[i].style.fontWeight='bold';  //bolds the current chapter name
             };
+        }
+        /*
+        Hides all the subjects
+        */
+        for(let i in subjects) {
+            subjects[i].style.display='none';
+        }
+        /*
+        Displays the subjects of first grade by default
+        */
+        for(let i = 0; i < subjectCount[0]; i++) {
+            subjects[i].style.display='block';
+        }
+        /*
+        When user clicks on a grade
+        */
+        for(let i = 0; i < grades.length; i++) {
+            grades[i].addEventListener('click', gradesClick(i));
+        }
+        function gradesClick(i) {
+            return function() {
+                var subjectSum = 0;
+                for(let a = 0; a < i; a++) {
+                    subjectSum+=subjectCount[a];
+                }
+                /*
+                Toggles between slide up and slide down
+                */
+                for(let b = subjectSum; b < subjectSum + subjectCount[i]; b++) {
+                    $(document).ready(function() {
+                        $(subjects[b]).slideToggle(300);
+                    });
+                }
+            }
         }
     }
 };

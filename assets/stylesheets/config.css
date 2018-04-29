@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Regular.ttf');
+}
 body {
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
 }
 .box {
-    border:5px solid black;
-    margin:10% 0%;
+    margin:5% 0%;
+}
+* {
+    box-sizing: border-box;
 }
 .content {
     border-right:5px solid black;
@@ -12,6 +19,7 @@ body {
 }
 .content h1 {
     font-weight: bold;
+    text-align: center;
 }
 .questionAnswer {
     padding: 5%;
@@ -40,4 +48,38 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1000;
+}
+.section {
+    display: none;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+.grades {
+    background-color: rgba(0,0,0,0.9);
+    color: white;
+    padding: 3%;
+    border-radius: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.subjects {
+    text-align: center;
+    background-color: rgb(255,32,82);
+    color: white;
+    border-radius: 100px;
+    padding: 1%;
+}
+.chapters {
+    text-align: center;
+    cursor: pointer;
+}
+.font {
+    font-size: 20px;
+}
+@media(max-width:768px) {
+    .font {
+        font-size: 16px;
+    }
 }
